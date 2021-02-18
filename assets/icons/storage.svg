@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="device" width="60" height="60" viewBox="0 0 60 60">
+    <defs>
+        <style>
+            .cls-2{fill:#fff}
+        </style>
+    </defs>
+    <path id="사각형_35" fill="none" d="M0 0H60V60H0z"/>
+    <g id="그룹_8" transform="translate(-720)">
+        <path id="패스_19" d="M772 10h-38l-4 4v3.942h4V14h38v31h-20v4h24V14z" class="cls-2"/>
+        <path id="패스_20" d="M730 22l-4 4v22l4 4h14l4-4V26l-4-4zm14 26h-14V26h14z" class="cls-2"/>
+    </g>
+</svg>

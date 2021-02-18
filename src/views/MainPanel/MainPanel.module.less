@@ -1,0 +1,23 @@
+.container {
+    background-color: #575e66;
+    color: white;
+    width: 100%;
+    height: 100%;
+    font-size: 1.3rem;
+
+    .childContainer {
+        .mainContainer {
+            display: flex;
+            .sideMenu {
+                flex: 1;
+            }
+            .mainMenu {
+                flex: 5;
+                display: grid;
+                gap: 70px;
+                grid-template-columns: repeat(4, minmax(300px, 1fr));
+                grid-template-rows: repeat(4, minmax(300px, 1fr));
+            }
+        }
+    }
+}

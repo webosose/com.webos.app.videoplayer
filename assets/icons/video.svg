@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="video" width="60" height="60" viewBox="0 0 60 60">
+    <defs>
+        <style>
+            .cls-2{fill:#fff}
+        </style>
+    </defs>
+    <path id="사각형_12" fill="none" d="M0 0H60V60H0z"/>
+    <g id="그룹_9" transform="translate(-1114)">
+        <path id="패스_31" d="M1138.02 39.05l15.61-9.02-15.61-9z" class="cls-2"/>
+        <path id="패스_32" d="M1138.27 14l6-6h-6.61l-6 6z" class="cls-2"/>
+        <path id="패스_33" d="M1150.54 14l6-6h-6.61l-6 6z" class="cls-2"/>
+        <path id="패스_34" d="M1162.19 8l-6 6h5.81v34h-36V14l6-6h-10v40l4 4h36l4-4V8z" class="cls-2"/>
+    </g>
+</svg>

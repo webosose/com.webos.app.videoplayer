@@ -1,0 +1,24 @@
+{
+	"id": "com.webos.app.videoplayer",
+	"version": "0.0.1",
+	"vendor": "LGSI",
+	"type": "web",
+	"main": "index.html",
+	"title": "Video Player",
+	"icon": "icon.png",
+	"miniicon": "icon-mini.png",
+	"largeIcon": "icon-large.png",
+	"transparent": true,
+	"visible": true,
+	"lockable": false,
+	"noSplashOnLaunch": true,
+	"supportQuickStart": false,
+	"trustLevel": "trusted",
+	"requiredPermissions": [
+		"mediaindexer.operation"
+	],
+	"accessibility": {
+		"supportsAudioGuidance": true
+	},
+	"uiRevision": 1
+}
