@@ -181,6 +181,8 @@ function VideoPlayerBase (
 			noSlider,
 			noSpinner,
 			onBack,
+			onJumpBackward,
+			onJumpForward,
 			playbackRateHash,
 			seekDisabled,
 			selection,
@@ -264,7 +266,7 @@ function VideoPlayerBase (
 		};
 	};
 
-	const hideFeedback = useCallback(() => {
+	const hideFeedback = () => {
 		if (state.feedbackVisible && state.feedbackAction !== 'focus') {
 			setSettings({
 				...state,
@@ -272,19 +274,19 @@ function VideoPlayerBase (
 				feedbackAction: 'idle'
 			});
 		}
-	});
+	};
 
-	const hideTitle = useCallback(() => {
+	const hideTitle = () => {
 		setSettings({...state, titleVisible: false});
-	});
+	};
 
 	const stopDelayedFeedbackHide = useCallback(() => {
 		new Job(hideFeedback).stop();
-	},[hideFeedback]);
+	}, [hideFeedback]);
 
 	const stopDelayedTitleHide = useCallback(() => {
-		new Job(hideTitle).stop()
-	},[hideTitle]);
+		new Job(hideTitle).stop();
+	}, [hideTitle]);
 
 	/**
 	 * If the announce state is either ready to read the title or ready to read info, advance the
@@ -301,7 +303,7 @@ function VideoPlayerBase (
 		}
 
 		return true;
-	},[state.announce]);
+	}, [state.announce]);
 
 	const doAutoClose = () => {
 		stopDelayedFeedbackHide();
@@ -329,19 +331,19 @@ function VideoPlayerBase (
 
 	const activityDetected = useCallback(() => {
 		startAutoCloseTimeout();
-	},[startAutoCloseTimeout]);
+	}, [startAutoCloseTimeout]);
 
 	const startDelayedFeedbackHide = useCallback(() => {
 		if (feedbackHideDelay) {
 			new Job(hideFeedback).startAfter(feedbackHideDelay);
 		}
-	},[feedbackHideDelay, hideFeedback]);
+	}, [feedbackHideDelay, hideFeedback]);
 
 	const startDelayedTitleHide = useCallback(() => {
 		if (titleHideDelay) {
 			new Job(hideTitle).startAfter(titleHideDelay);
 		}
-	},[hideTitle, titleHideDelay]);
+	}, [hideTitle, titleHideDelay]);
 
 	/**
 	 * Shows media controls.
@@ -356,7 +358,7 @@ function VideoPlayerBase (
 		}
 		startDelayedFeedbackHide();
 		startDelayedTitleHide();
-		let announceType= '';
+		let announceType = '';
 		if (state.announce === AnnounceState.READY) {
 			// if we haven't read the title yet, do so this time
 			announceType = AnnounceState.TITLE;
@@ -366,15 +368,15 @@ function VideoPlayerBase (
 		}
 
 		setSettings({
-				...state,
-				announce: announceType,
-				bottomControlsRendered: true,
-				feedbackAction: 'idle',
-				feedbackVisible: true,
-				mediaControlsVisible: true,
-				mediaSliderVisible: true,
-				miniFeedbackVisible: false,
-				titleVisible: true
+			...state,
+			announce: announceType,
+			bottomControlsRendered: true,
+			feedbackAction: 'idle',
+			feedbackVisible: true,
+			mediaControlsVisible: true,
+			mediaSliderVisible: true,
+			miniFeedbackVisible: false,
+			titleVisible: true
 		});
 	}, [disabled, startDelayedFeedbackHide, startDelayedTitleHide, state]);
 
@@ -411,7 +413,7 @@ function VideoPlayerBase (
 				}));
 			}
 		}
-	},[noMediaSliderFeedback, state.mediaControlsVisible, state.mediaSliderVisible, state.miniFeedbackVisible]);
+	}, [noMediaSliderFeedback, state.mediaControlsVisible, state.mediaSliderVisible, state.miniFeedbackVisible]);
 
 	/**
 	 * Set the media playback time index
@@ -427,7 +429,7 @@ function VideoPlayerBase (
 		} else {
 			forward('onSeekFailed', {}, arguments[0]);
 		}
-	},[arguments, seekDisabled, state.sourceUnavailable]);
+	}, [seekDisabled, state.sourceUnavailable]);
 
 	const hideMiniFeedback = () => {
 		if (state.miniFeedbackVisible) {
@@ -446,7 +448,7 @@ function VideoPlayerBase (
 		if (delay) {
 			hideMiniFeedbackJob.startAfter(delay);
 		}
-	},[hideMiniFeedbackJob, miniFeedbackHideDelay]);
+	}, [hideMiniFeedbackJob, miniFeedbackHideDelay]);
 
 	/**
 	 * Step a given amount of time away from the current playback position.
@@ -473,11 +475,11 @@ function VideoPlayerBase (
 			video.current.currentTime = (currentTime >= 3.0) ? currentTime + distance : 0;
 		}
 		startDelayedMiniFeedbackHide();
-	},[jumpBy, seek, showFeedback, startDelayedFeedbackHide, startDelayedMiniFeedbackHide, state.currentTime, state.sourceUnavailable]);
+	}, [jumpBy, seek, showFeedback, startDelayedFeedbackHide, startDelayedMiniFeedbackHide, state.currentTime, state.sourceUnavailable]);
 
 	const stopDelayedMiniFeedbackHide = useCallback(() => {
 		hideMiniFeedbackJob.stop();
-	},[hideMiniFeedbackJob]);
+	}, [hideMiniFeedbackJob]);
 
 	const clearPulsedPlayback = () => {
 		pulsedPlaybackRate.current = null;
@@ -522,11 +524,11 @@ function VideoPlayerBase (
 	 */
 	const stopRewindJob = useCallback(() => {
 		rewindJob.stop();
-	},[rewindJob]);
+	}, [rewindJob]);
 
 	const stopAutoCloseTimeout = useCallback(() => {
 		autoCloseJob.stop();
-	},[autoCloseJob]);
+	}, [autoCloseJob]);
 
 	const announceJob = new Job(msg => (announceRef.current && announceRef.current.announce(msg)), 200);
 	const renderBottomControl = new Job(() => {
@@ -674,7 +676,7 @@ function VideoPlayerBase (
 			isTimeBeyondSelection(time) &&
 			!forwardWithPrevent('onSeekOutsideSelection', {type: 'onSeekOutsideSelection', time}, arguments[0])
 		);
-	},[arguments, selection]);
+	}, [selection]);
 
 	/**
 	 * Hides media controls.
@@ -698,7 +700,7 @@ function VideoPlayerBase (
 			infoVisible: false
 		});
 		markAnnounceRead();
-	},[markAnnounceRead, state, stopAutoCloseTimeout, stopDelayedFeedbackHide, stopDelayedMiniFeedbackHide, stopDelayedTitleHide]);
+	}, [markAnnounceRead, state, stopAutoCloseTimeout, stopDelayedFeedbackHide, stopDelayedMiniFeedbackHide, stopDelayedTitleHide]);
 
 	// only show mini feedback if playback controls are invoked by a key event
 	const shouldShowMiniFeedback = (ev) => {
@@ -764,7 +766,7 @@ function VideoPlayerBase (
 			jump(jumpByLeft);
 			announceJob.startAfter(500, secondsToTime(video.current.currentTime, getDurFmt(locale), {includeHour: true}));
 		}
-	}, [seekDisabled, arguments, jumpBy, state.duration, state.currentTime, preventTimeChange, jump, announceJob, locale]);
+	}, [seekDisabled, jumpBy, state.duration, state.currentTime, preventTimeChange, jump, announceJob, locale]);
 
 
 
@@ -1125,7 +1127,7 @@ function VideoPlayerBase (
 				announce(`${$L('jump to')} ${knobTime}`);
 			}
 		}
-	}, [announce, arguments, locale, sliderTooltipTimeJob]);
+	}, [announce, locale, sliderTooltipTimeJob]);
 
 	const handleSliderFocus = useCallback(() => {
 		const seconds = Math.floor(sliderKnobProportion.current * video.current.duration);
@@ -1146,7 +1148,7 @@ function VideoPlayerBase (
 
 			announce(`${$L('jump to')} ${knobTime}`);
 		}
-	}, [announce, arguments, locale, sliderTooltipTimeJob, stopDelayedFeedbackHide]);
+	}, [announce, locale, sliderTooltipTimeJob, stopDelayedFeedbackHide]);
 
 	const handleSliderBlur = useCallback(() => {
 		sliderScrubbing.current = false;
@@ -1179,19 +1181,19 @@ function VideoPlayerBase (
 		}
 	}, []);
 
-	const onJumpBackward = () => {
-		forward('onJumpBackward', {
-			...getMediaState()
-		}, arguments[0]);
-		jump(-1 * jumpBy);
-	};
+	// const onJumpBackward = () => {
+	// 	forward('onJumpBackward', {
+	// 		...getMediaState()
+	// 	}, arguments[0]);
+	// 	jump(-1 * jumpBy);
+	// };
 
-	const onJumpForward = () => {
-		forward('onJumpForward', {
-			...getMediaState()
-		}, arguments[0]);
-		jump(jumpBy);
-	};
+	// const onJumpForward = () => {
+	// 	forward('onJumpForward', {
+	// 		...getMediaState()
+	// 	}, arguments[0]);
+	// 	jump(jumpBy);
+	// };
 
 	const handleToggleMore = useCallback(({showMoreComponents, liftDistance}) => {
 		if (!showMoreComponents) {
@@ -1332,9 +1334,9 @@ function VideoPlayerBase (
 			</Overlay>
 			{state.bottomControlsRendered &&
 				<div className={css.fullscreen} {...controlsAriaProps}>
-				{
-					onBack instanceof Function && state.mediaSliderVisible && <Button icon="arrowhookleft" className={css.back} iconOnly size="large" onClick={onBack} backgroundOpacity="transparent"/>
-				}
+					{
+						onBack instanceof Function && state.mediaSliderVisible && <Button icon="arrowhookleft" className={css.back} iconOnly size="large" onClick={onBack} backgroundOpacity="transparent" />
+					}
 
 					<FeedbackContent
 						className={css.miniFeedback}
@@ -1665,6 +1667,14 @@ VideoPlayerBase.propTypes = {
 	onBack: PropTypes.func,
 
 	/**
+	 * Called when video ends
+	 *
+	 * @type {Function}
+	 * @public
+	 */
+	onControlsAvailable: PropTypes.func,
+
+	/**
 	 * Called when the player's controls change availability, whether they are shown
 	 * or hidden.
 	 *
@@ -1676,13 +1686,6 @@ VideoPlayerBase.propTypes = {
 	 */
 	onEnded: PropTypes.func,
 
-	/**
-	 * Called when video ends
-	 *
-	 * @type {Function}
-	 * @public
-	 */
-	onControlsAvailable: PropTypes.func,
 
 	/**
 	 * Called when the video is fast forwarded.

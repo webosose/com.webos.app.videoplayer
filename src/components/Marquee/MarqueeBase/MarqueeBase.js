@@ -32,7 +32,6 @@ const onMarqueeComplete = handle(
 	stop,
 	(ev, props) => forward('onMarqueeComplete', {type: 'onMarqueeComplete'}, props)
 ).finally(() => {
-	console.log('This will log at the end no matter what happens within the handler above');
 });
 
 class MarqueeBase extends React.PureComponent {
@@ -311,8 +310,8 @@ MarqueeBase.propTypes = /** @lends ui/Marquee.MarqueeBase.prototype */ {
 };
 
 MarqueeBase.defaultProps = {
-	spacing: 0,
 	rtl: false,
+	spacing: 0,
 	willAnimate: false
 };
 

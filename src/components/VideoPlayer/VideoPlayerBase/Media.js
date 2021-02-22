@@ -170,7 +170,9 @@ class Media extends React.Component {
 		 * @type {*}
 		 * @public
 		 */
-		source: PropTypes.any
+		source: PropTypes.any,
+
+		track: PropTypes.any
 	};
 
 	static defaultProps = {

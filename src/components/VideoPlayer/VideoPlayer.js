@@ -33,6 +33,8 @@ const VideoPlayer = (
 		{
 			// actionGuideLabel,
 			handleBack,
+			handleNext,
+			handlePrevious,
 			playlist,
 			...rest
 		}
@@ -82,25 +84,12 @@ const VideoPlayer = (
 		});
 	}, [subtitleState.items.size.children.index, subtitleState.items.position.children.index, subtitleState.items.color.children.index, handleSubtitleSettings, subtitleState.items.position.children.items, subtitleState.items.size.children.items, subtitleState.items.color.children.items]);
 
-	// const handleNext = useCallback(() => {
-	// 	dispatch({type: 'jump', payload: {playlistLength: playlist.length - 1, playlistDirection: 'next'}})
-	// }, [playlist.length]);
-	// const handleNext = () => {
-		// dispatch({type: 'jump', payload: {playlistLength: playlist.length - 1, playlistDirection: 'next'}})
-	// };
-
-	// const handlePrevious = useCallback(() => {
-	// 	dispatch({type: 'jump', payload: {playlistLength: playlist.length - 1, playlistDirection: 'previous'}})
-	// }, [playlist.length]);
-	// const handlePrevious = () => {
-		// dispatch({type: 'jump', payload: {playlistLength: playlist.length - 1, playlistDirection: 'previous'}})
-	// };
 
 	return (
 		<VideoPlayerBase
 			{...rest}
-			// onJumpForward={handleNext}
-			// onJumpBackward={handlePrevious}
+			onJumpForward={handleNext}
+			onJumpBackward={handlePrevious}
 			// onEnded={handleNext}
 			onBack={handleBack}
 			loop={state.repeat.loop}
@@ -161,6 +150,20 @@ VideoPlayer.propTypes = {
 	 * @type {Function}
 	 */
 	handleBack: PropTypes.func,
+
+	/**
+	 * Function to handle Next video
+	 *
+	 * @type {Function}
+	 */
+	handleNext: PropTypes.func,
+
+	/**
+	 * Function to handle Previous video
+	 *
+	 * @type {Function}
+	 */
+	handlePrevious: PropTypes.func,
 
 	/**
 	 * Contains the list of videos to be played

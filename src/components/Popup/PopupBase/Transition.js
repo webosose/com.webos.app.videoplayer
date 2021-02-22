@@ -59,7 +59,7 @@ const TransitionBase = function ({css, childRef, children, direction, duration, 
 	}
 
 	const getCalculatedStyle = () => {
-		let style = undefined;
+		let style;
 		if (type === 'clip') {
 			style = {
 				...style,
@@ -264,9 +264,9 @@ TransitionBase.propTypes = {
 };
 
 TransitionBase.defaultProps = {
-	noAnimation: false,
 	direction: 'up',
 	duration: 'medium',
+	noAnimation: false,
 	timingFunction: 'ease-in-out',
 	type: 'slide',
 	visible: true
@@ -562,7 +562,7 @@ class Transition extends React.Component {
 					clipHeight={this.state.initialHeight}
 					clipWidth={this.state.initialWidth}
 					onTransitionEnd={this.handleTransitionEnd}
-	/>
+				/>
 			);
 		}
 	}

@@ -54,7 +54,6 @@ const keyUP = handle(
 	forward('onActivate')    // calls event.preventDefault() to prevent the `keypress` event
 
 ).finally(() => {
-	console.log('This will log at the end no matter what happens within the handler above');
 });
 
 const blur = handle(
@@ -62,7 +61,6 @@ const blur = handle(
 	forProp('active', true),
 	forward('onActivate')
 ).finally(() => {
-	console.log('This will log at the end no matter what happens within the handler above');
 });
 
 /**
@@ -85,7 +83,6 @@ const keyDown = handle(
 		handleDecrement
 	])
 ).finally(() => {
-	console.log('This will log at the end no matter what happens within the handler above');
 });
 class SliderBase extends React.PureComponent {
 	constructor () {
@@ -161,6 +158,7 @@ SliderBase.propTypes = {
 	activateOnSelect: PropTypes.bool,
 	active: PropTypes.bool,
 	css: PropTypes.object,
+	disabled: PropTypes.bool,
 	focused: PropTypes.bool,
 	knobStep: PropTypes.number,
 	max: PropTypes.number,
@@ -168,6 +166,7 @@ SliderBase.propTypes = {
 	onActivate: PropTypes.func,
 	onKeyDown: PropTypes.func,
 	onKeyUp: PropTypes.func,
+	rest: PropTypes.object,
 	step: PropTypes.number,
 	tooltip: PropTypes.oneOfType([PropTypes.bool, PropTypes.object, PropTypes.func]),
 	/**
@@ -187,8 +186,8 @@ SliderBase.defaultProps = {
 	disabled: false,
 	max: 100,
 	min: 0,
-	step: 1,
-	rest: {value: 0}
+	rest: {value: 0},
+	step: 1
 };
 
 const SliderDecorator = compose(

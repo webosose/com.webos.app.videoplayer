@@ -13,26 +13,26 @@ const handler = (callback, map = fwd) => callback && (res => {
 });
 
 const luna =  (
-    service,
-    method,
-    {subscribe = false, timeout = 0, ...params} = {},
-    map
+		service,
+		method,
+		{subscribe = false, timeout = 0, ...params} = {},
+		map
 ) => (
-({onSuccess, onFailure, onTimeout, onComplete, ...additionalParams} = {}) => {
-    const req = new LS2Request();
-    req.send({
-        service: 'luna://' + service,
-        method,
-        parameters: Object.assign({}, params, additionalParams),
-        onSuccess: handler(onSuccess, map),
-        onFailure: handler(onFailure),
-        onTimeout: handler(onTimeout),
-        onComplete: handler(onComplete, map),
-        subscribe,
-        timeout
-    });
-    return req;
-}
+	({onSuccess, onFailure, onTimeout, onComplete, ...additionalParams} = {}) => {
+		const req = new LS2Request();
+		req.send({
+			service: 'luna://' + service,
+			method,
+			parameters: Object.assign({}, params, additionalParams),
+			onSuccess: handler(onSuccess, map),
+			onFailure: handler(onFailure),
+			onTimeout: handler(onTimeout),
+			onComplete: handler(onComplete, map),
+			subscribe,
+			timeout
+		});
+		return req;
+	}
 );
 
 export default luna;

@@ -160,7 +160,6 @@ const SliderBehaviorDecorator = hoc(defaultConfig, (config, Wrapped) => {
 
 		handleSpotlightEvents (ev) {
 			if (!emitSpotlightEvents) {
-				debugger;
 				forward('onKeyDown', ev, this.props);
 			}
 

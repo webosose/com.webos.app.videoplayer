@@ -1,5 +1,6 @@
 import ThemeDecorator from '../components/ThemeDecorator';
 import React from 'react';
+import PropTypes from 'prop-types';
 import {Panels, Routable, Route} from '../components/Panels';
 import {connect} from 'react-redux';
 
@@ -16,13 +17,17 @@ const App = ({path, ...rest}) => {
 				<Route path="videoplayer" component={VideoPanel} title="Video Player" />
 			</RoutablePanels>
 		</div>
-	)
-}
+	);
+};
+
+App.propTypes = {
+	path: PropTypes.string
+};
 
 const mapStateToProps = ({path}) => {
 	return {
 		path: path.path
-	}
-}
+	};
+};
 
 export default connect(mapStateToProps)(ThemeDecorator(App));

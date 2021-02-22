@@ -10,7 +10,7 @@ const appElement = (
 	<Provider store={store}>
 		<App />
 	</Provider>
-	);
+);
 
 // In a browser environment, render instead of exporting
 if (typeof window !== 'undefined') {

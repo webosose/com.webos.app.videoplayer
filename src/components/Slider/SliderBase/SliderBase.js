@@ -89,8 +89,8 @@ SliderBase.propTypes = {
 SliderBase.defaultProps = {
 	disabled: false,
 	knobComponent: KnobBase,
-	min: 0,
 	max: 100,
+	min: 0,
 	noFill: false,
 	orientation: 'horizontal',
 	progressAnchor: 0,

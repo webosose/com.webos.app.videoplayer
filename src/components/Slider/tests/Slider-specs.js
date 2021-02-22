@@ -33,7 +33,7 @@ describe('Slider', () => {
 		);
 
 		const value = slider.find('SliderBehaviorDecorator').prop('backgroundProgress');
-		expect(value).toBe(undefined);
+		expect(value).toBe();
 	});
 
 	it('orientation  is horizontal by default', () => {

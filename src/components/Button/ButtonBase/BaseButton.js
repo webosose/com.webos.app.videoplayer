@@ -130,7 +130,7 @@ ButtonBase.propTypes = {
 	 * @public
 	 */
 	pressed: PropTypes.bool,
-	 /**
+	/**
 	 * Indicates the component is selected.
 	 *
 	 * Applies the `selected` CSS class which can be customized by

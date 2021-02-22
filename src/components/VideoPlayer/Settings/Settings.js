@@ -1,4 +1,4 @@
-import React, {useReducer,useCallback} from 'react';
+import React, {useReducer, useCallback} from 'react';
 import settingsReducer from '../Reducers/settingsReducer';
 import Menu from '../Menu';
 
@@ -104,17 +104,17 @@ const Settings = ({position}) => {
 	}, []);
 
 	return (!state.disable &&
-			<Menu
-				handleNavigate={handleNavigate}
-				handleSelect={handleSelect}
-				heading={itemLevel !== '' ? menuItem[itemLevel].children.heading : state.heading}
-				list={itemLevel !== '' ? menuItem[itemLevel].children.items : menuItem}
-				radioIndex={itemLevel !== '' && menuItem[itemLevel].children.index}
-				subHeading={itemLevel !== '' ? menuItem[itemLevel].children.subHeading : ''}
-				type={itemLevel !== '' ? menuItem[itemLevel].children.type : state.type}
-				{...{position}}
-			/>
-	)
+	<Menu
+		handleNavigate={handleNavigate}
+		handleSelect={handleSelect}
+		heading={itemLevel !== '' ? menuItem[itemLevel].children.heading : state.heading}
+		list={itemLevel !== '' ? menuItem[itemLevel].children.items : menuItem}
+		radioIndex={itemLevel !== '' && menuItem[itemLevel].children.index}
+		subHeading={itemLevel !== '' ? menuItem[itemLevel].children.subHeading : ''}
+		type={itemLevel !== '' ? menuItem[itemLevel].children.type : state.type}
+		{...{position}}
+	/>
+	);
 };
 
 export default Settings;

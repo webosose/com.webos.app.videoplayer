@@ -1,5 +1,6 @@
 import Group from '@enact/ui/Group';
 import React, {useCallback} from 'react';
+import PropTypes from 'prop-types';
 import Icon from '../../Icon';
 import RadioButton from '../../RadioButton';
 import Slider from '../../Slider';
@@ -11,15 +12,15 @@ const Menu = ({handleNavigate, handleSelect, heading, list, position, radioIndex
 	const radioButtonGroup = useCallback(({selected, ...rest}) => {
 		return (
 			<RadioButton
-			style={{margin:0, fontSize: '1rem', padding: '1rem 0.5rem', borderRadius: '1rem'}}
-			selected={selected}
-			{...rest}
-		/>
-		)
+				style={{margin:0, fontSize: '1rem', padding: '1rem 0.5rem', borderRadius: '1rem'}}
+				selected={selected}
+				{...rest}
+			/>
+		);
 	}, []);
 
 	return (
-		<div className={css.menu} style={{left: `${position-190}px`}}>
+		<div className={css.menu} style={{left: `${position - 190}px`}}>
 			<div className={css.header}>
 				{
 					heading &&
@@ -71,7 +72,7 @@ const Menu = ({handleNavigate, handleSelect, heading, list, position, radioIndex
 						selectedProp="selected"
 						selected={radioIndex}
 					>
-					  {[...list.map( radioItem => radioItem.name)]}
+						{[...list.map( radioItem => radioItem.name)]}
 					</Group>
 				}
 				{
@@ -89,7 +90,18 @@ const Menu = ({handleNavigate, handleSelect, heading, list, position, radioIndex
 				}
 			</ul>
 		</div>
-	)
-}
+	);
+};
+
+Menu.propTypes = {
+	handleNavigate: PropTypes.func,
+	handleSelect: PropTypes.func,
+	heading: PropTypes.string,
+	list: PropTypes.array,
+	position: PropTypes.number,
+	radioIndex: PropTypes.any,
+	subHeading: PropTypes.string,
+	type: PropTypes.any
+};
 
 export default Menu;
