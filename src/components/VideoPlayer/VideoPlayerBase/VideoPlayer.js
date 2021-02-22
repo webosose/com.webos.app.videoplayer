@@ -35,6 +35,7 @@ import ReactDOM from 'react-dom';
 import $L from '../../internal/$L';
 import Skinnable from '../../Skinnable';
 import Spinner from '../../Spinner';
+import Button from '../../Button';
 import {calcNumberValueOfPlaybackRate, secondsToTime} from './util';
 import Overlay from './Overlay';
 import Media from './Media';
@@ -179,6 +180,7 @@ function VideoPlayerBase (
 			noMiniFeedback,
 			noSlider,
 			noSpinner,
+			onBack,
 			playbackRateHash,
 			seekDisabled,
 			selection,
@@ -1330,6 +1332,10 @@ function VideoPlayerBase (
 			</Overlay>
 			{state.bottomControlsRendered &&
 				<div className={css.fullscreen} {...controlsAriaProps}>
+				{
+					onBack instanceof Function && state.mediaSliderVisible && <Button icon="arrowhookleft" className={css.back} iconOnly size="large" onClick={onBack} backgroundOpacity="transparent"/>
+				}
+
 					<FeedbackContent
 						className={css.miniFeedback}
 						playbackRate={pulsedPlaybackRate.current || selectPlaybackRate(speedIndex.current)}
@@ -1649,6 +1655,14 @@ VideoPlayerBase.propTypes = {
 	 * @public
 	 */
 	noSpinner: PropTypes.bool,
+
+	/**
+	 * Functio to go back
+	 *
+	 * @type {Function}
+	 * @public
+	 */
+	onBack: PropTypes.func,
 
 	/**
 	 * Called when the player's controls change availability, whether they are shown

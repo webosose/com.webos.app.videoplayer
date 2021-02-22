@@ -1,14 +1,16 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {changePath} from '../../actions/navigationActions';
 import VideoPlayer from '../../components/VideoPlayer';
 
-const VideoPanel = ({videoMetaData}) => {
+const VideoPanel = ({videoMetaData, handleBack}) => {
 	return (
 		<VideoPlayer
 			actionGuideLabel={'Press Down Button to Scroll'}
 			autoCloseTimeout={7000}
 			disabled={false}
 			feedbackHideDelay={3000}
+			handleBack={() => handleBack('home')}
 			// loop={boolean('loop', Config, false)}
 			miniFeedbackHideDelay={2000}
 			muted={false}
@@ -36,4 +38,10 @@ const mapStateToProps = ({video: {currentVideoMetaData}}) => {
 	}
 }
 
-export default connect(mapStateToProps)(VideoPanel);
+const mapDispatchToState = dispatch => {
+	return {
+		handleBack: (path) => dispatch(changePath(path))
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToState)(VideoPanel);

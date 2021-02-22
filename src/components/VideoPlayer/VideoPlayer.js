@@ -32,6 +32,7 @@ const initialState = {
 const VideoPlayer = (
 		{
 			// actionGuideLabel,
+			handleBack,
 			playlist,
 			...rest
 		}
@@ -101,6 +102,7 @@ const VideoPlayer = (
 			// onJumpForward={handleNext}
 			// onJumpBackward={handlePrevious}
 			// onEnded={handleNext}
+			onBack={handleBack}
 			loop={state.repeat.loop}
 			poster={playlist.thumbnail}
 			thumbnailSrc={playlist.thumbnail}
@@ -152,6 +154,13 @@ VideoPlayer.propTypes = {
 	 * @public
 	 */
 	// actionGuideLabel: PropTypes.string,
+
+	/**
+	 * Function to handle navigation
+	 *
+	 * @type {Function}
+	 */
+	handleBack: PropTypes.func,
 
 	/**
 	 * Contains the list of videos to be played
