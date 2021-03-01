@@ -2,9 +2,8 @@ import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
-import Header from '../../components/Header';
-import SideMenu from '../../components/SideMenu';
-import DeviceList from '../../components/DeviceList';
+import {TabLayout, Tab} from '@enact/goldstone/TabLayout';
+import {Panel, Header} from '@enact/goldstone/Panels';
 import VideoList from '../../components/VideoList';
 
 import {changePath} from '../../actions/navigationActions';
@@ -13,7 +12,7 @@ import {getVideoList, getCurrentVideoMetaData} from '../../actions/videoActions'
 
 import css from './MainPanel.module.less';
 
-const MainPanel = ({deviceList, handleNavigate, getListDevice, getListVideo, getVideoMetaData, videoList}) => {
+const MainPanel = ({devices, handleNavigate, getListDevice, getListVideo, getVideoMetaData, videoList, ...rest}) => {
 
 	useEffect(() => {
 		getListDevice();
@@ -25,21 +24,22 @@ const MainPanel = ({deviceList, handleNavigate, getListDevice, getListVideo, get
 	};
 
 	return (
-		<div className={css.container}>
-			<div className={css.childContainer}>
-				<Header />
-				<div className={css.mainContainer}>
-					<div className={css.sideMenu}>
-						<SideMenu>
-							<DeviceList deviceList={deviceList} handleAction={() => getListVideo()} />
-						</SideMenu>
-					</div>
-					<div className={css.mainMenu}>
-						<VideoList videoList={videoList} handleNavigate={handleVideoNavigate} />
-					</div>
-				</div>
-			</div>
-		</div>
+		<Panel {...rest}>
+			<Header />
+			<TabLayout
+				onSelect={getListVideo}
+			>
+				{devices.map((device) => {
+					return device.deviceList.length > 0 && device.deviceList.map((deviceList, index) => {
+						return (
+							<Tab className={css.tab} key={deviceList.uri} title={deviceList.name} icon='usb'>
+								<VideoList key={index} videoList={videoList} handleNavigate={handleVideoNavigate}/>
+							</Tab>
+						)
+					})
+				})}
+			</TabLayout>
+		</Panel>
 	);
 };
 
@@ -54,7 +54,7 @@ MainPanel.propTypes = {
 
 const mapStateToProps = ({device, video}) => {
 	return {
-		deviceList: device.deviceList,
+		devices: device.deviceList,
 		videoList: video.videoList
 	};
 };

@@ -2,7 +2,7 @@ import ForwardRef from '@enact/ui/ForwardRef';
 import React, {memo} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import Marquee from '../../Marquee';
+import Marquee from '@enact/goldstone/Marquee';
 import css from './VideoPlayer.module.less';
 
 /**

@@ -32,10 +32,10 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React, {useState, useEffect, useCallback, useContext, useRef, memo} from 'react';
 import ReactDOM from 'react-dom';
-import $L from '../../internal/$L';
-import Skinnable from '../../Skinnable';
-import Spinner from '../../Spinner';
-import Button from '../../Button';
+import $L from '@enact/goldstone/internal/$L';
+import Skinnable from '@enact/goldstone/Skinnable';
+import Spinner from '@enact/goldstone/Spinner';
+import Button from '@enact/goldstone/Button';
 import {calcNumberValueOfPlaybackRate, secondsToTime} from './util';
 import Overlay from './Overlay';
 import Media from './Media';
@@ -268,16 +268,18 @@ function VideoPlayerBase (
 
 	const hideFeedback = () => {
 		if (state.feedbackVisible && state.feedbackAction !== 'focus') {
-			setSettings({
-				...state,
-				feedbackVisible: false,
-				feedbackAction: 'idle'
-			});
+			setSettings(prevState => (
+				{
+					...prevState,
+					feedbackVisible: false,
+					feedbackAction: 'idle'
+				})
+			);
 		}
 	};
 
 	const hideTitle = () => {
-		setSettings({...state, titleVisible: false});
+		setSettings(prevState => ({...prevState, titleVisible: false}));
 	};
 
 	const stopDelayedFeedbackHide = useCallback(() => {
@@ -366,9 +368,8 @@ function VideoPlayerBase (
 			// if we have read the title, advance to INFO so title isn't read again
 			announceType = AnnounceState.TITLE_READ;
 		}
-
-		setSettings({
-			...state,
+		setSettings(prevState => ({
+			...prevState,
 			announce: announceType,
 			bottomControlsRendered: true,
 			feedbackAction: 'idle',
@@ -377,7 +378,7 @@ function VideoPlayerBase (
 			mediaSliderVisible: true,
 			miniFeedbackVisible: false,
 			titleVisible: true
-		});
+		}));
 	}, [disabled, startDelayedFeedbackHide, startDelayedTitleHide, state]);
 
 	const showControlsFromPointer = () => {
@@ -513,7 +514,8 @@ function VideoPlayerBase (
 	const startRewindJob = () => {
 		rewindBeginTime.current = perfNow();
 		if (prevCommand.current === 'rewind') {
-			rewindJob.start();
+			// rewindJob.start();
+			setTimeout(() => {rewindManually()}, 100)
 		}
 	};
 
@@ -533,7 +535,7 @@ function VideoPlayerBase (
 	const announceJob = new Job(msg => (announceRef.current && announceRef.current.announce(msg)), 200);
 	const renderBottomControl = new Job(() => {
 		if (!state.bottomControlsRendered) {
-			setSettings({...state, bottomControlsRendered: true});
+			setSettings(prevState => ({...prevState, bottomControlsRendered: true}));
 		}
 	});
 
@@ -690,15 +692,15 @@ function VideoPlayerBase (
 		stopDelayedMiniFeedbackHide();
 		stopDelayedTitleHide();
 		stopAutoCloseTimeout();
-		setSettings({
-			...state,
+		setSettings(prevState => ({
+			...prevState,
 			feedbackAction: 'idle',
 			feedbackVisible: false,
 			mediaControlsVisible: false,
 			mediaSliderVisible: false,
 			miniFeedbackVisible: false,
 			infoVisible: false
-		});
+		}));
 		markAnnounceRead();
 	}, [markAnnounceRead, state, stopAutoCloseTimeout, stopDelayedFeedbackHide, stopDelayedMiniFeedbackHide, stopDelayedTitleHide]);
 
@@ -1055,7 +1057,7 @@ function VideoPlayerBase (
 		playbackRate.current = rate = String(rate);
 		const pbNumber = calcNumberValueOfPlaybackRate(rate);
 
-		if (!platform.webos) {
+		if (platform.webos) {
 			// ReactDOM throws error for setting negative value for playbackRate
 			video.current.playbackRate = pbNumber < 0 ? 0 : pbNumber;
 

@@ -1,0 +1,67 @@
+// ContextualPopup.module.less
+//
+@import '../styles/variables.less';
+@import '../styles/mixins.less';
+@import '../styles/skin.less';
+
+.contextualPopup {
+	.sand-body-text();
+	position: absolute;
+
+	.container {
+		position: absolute;
+		min-height: 192px;
+		min-width: 192px;
+		border-radius: @sand-contextual-popup-border-radius;
+		padding: @sand-contextual-popup-padding;
+		background-clip: padding-box;
+		-webkit-background-clip: padding-box;
+		-moz-background-clip: padding-box;
+		box-sizing: border-box;
+
+		&.fixedSize {
+			overflow: hidden;
+		}
+	}
+
+	:global(.enact-locale-right-to-left) & {
+		.container {
+			direction: rtl;
+		}
+	}
+
+	.arrow {
+		position: absolute;
+		height: @sand-contextual-popup-arrow-height;
+		width: @sand-contextual-popup-arrow-width;
+
+		// PLAT-84596: Coax the arrow onto a GPU layer to work around a rendering issue in Chromium
+		will-change: transform;
+
+		&.above {
+			transform: rotate(180deg);
+		}
+		&.left {
+			transform: rotate(90deg);
+		}
+		&.right {
+			transform: rotate(-90deg);
+		}
+	}
+
+	// Skin colors
+	.applySkins({
+		filter: drop-shadow(0 24px 32px @sand-contextual-popup-box-shadow-color);
+
+		.container {
+			background-color: @sand-contextual-popup-bg-color;
+			border-color: @sand-contextual-popup-border-color;
+		}
+
+		.arrow {
+			.arrowFill {
+				fill: @sand-contextual-popup-bg-color;
+			}
+		}
+	});
+}

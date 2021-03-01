@@ -1,0 +1,51 @@
+@import "../../styles/mixins.less";
+@import "../../styles/variables.less";
+@import "../../styles/skin.less";
+
+.progressBar {
+	--ui-progressbar-proportion-start: 0;
+	--ui-progressbar-proportion-start-background: 0;
+	--ui-progressbar-proportion-end: 0;
+	--ui-progressbar-proportion-end-background: 0;
+	position: relative;
+	direction: ltr;
+	}
+	.progressBar .bar,
+	.progressBar .fill,
+	.progressBar .load {
+	position: absolute;
+	}
+	.progressBar.vertical {
+	display: inline-block;
+	}
+	.progressBar.vertical .bar,
+	.progressBar.vertical .fill,
+	.progressBar.vertical .load {
+	height: 100%;
+	width: 100%;
+	bottom: 0;
+	}
+	.progressBar.vertical .fill {
+	bottom: calc(var(--ui-progressbar-proportion-start) * 100%);
+	height: calc(var(--ui-progressbar-proportion-end) * 100%);
+	}
+	.progressBar.vertical .load {
+	bottom: calc(var(--ui-progressbar-proportion-start-background) * 100%);
+	height: calc(var(--ui-progressbar-proportion-end-background) * 100%);
+	}
+	.progressBar.horizontal .bar,
+	.progressBar.horizontal .fill,
+	.progressBar.horizontal .load {
+	height: 100%;
+	}
+	.progressBar.horizontal .bar {
+	width: 100%;
+	}
+	.progressBar.horizontal .fill {
+	left: calc(var(--ui-progressbar-proportion-start) * 100%);
+	width: calc(var(--ui-progressbar-proportion-end) * 100%);
+	}
+	.progressBar.horizontal .load {
+	left: calc(var(--ui-progressbar-proportion-start-background) * 100%);
+	width: calc(var(--ui-progressbar-proportion-end-background) * 100%);
+	}

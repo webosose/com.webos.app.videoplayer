@@ -2,7 +2,7 @@ import React, {memo} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import Slider from '../../Slider';
+import Slider from '@enact/goldstone/Slider';
 
 import MediaKnob from './MediaKnob';
 import MediaSliderDecorator from './MediaSliderDecorator';

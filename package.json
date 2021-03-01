@@ -19,6 +19,7 @@
 	"private": true,
 	"repository": "",
 	"enact": {
+		"theme": "goldstone",
 		"ri": {
 			"baseSize": 72
 		}
@@ -33,6 +34,7 @@
 	],
 	"dependencies": {
 		"@enact/agate": "https://github.com/enactjs/agate",
+		"@enact/goldstone": "file:./goldstone",
 		"@enact/core": "^3.2.0",
 		"@enact/i18n": "^3.2.0",
 		"@enact/spotlight": "^3.2.0",

@@ -1,0 +1,23 @@
+// Image.module.less
+//
+@import "../styles/variables.less";
+
+.image {
+  width: 720px;
+  height: 480px;
+  display: inline-block;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.image.fit {
+  background-size: contain;
+}
+.image.fill {
+  background-size: cover;
+}
+.image .img {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}

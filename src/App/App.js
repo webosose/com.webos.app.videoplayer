@@ -1,8 +1,8 @@
-import ThemeDecorator from '../components/ThemeDecorator';
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Panels, Routable, Route} from '../components/Panels';
 import {connect} from 'react-redux';
+import {Panels, Routable, Route} from '@enact/goldstone/Panels';
+import ThemeDecorator from '@enact/goldstone/ThemeDecorator';
 
 import MainPanel from '../views/MainPanel';
 import VideoPanel from '../views/VideoPanel';
@@ -11,12 +11,10 @@ const RoutablePanels = Routable({navigate: 'onBack'}, Panels);
 
 const App = ({path, ...rest}) => {
 	return (
-		<div>
-			<RoutablePanels {...rest} path={path}>
-				<Route path="home" component={MainPanel} title="Home Page" />
-				<Route path="videoplayer" component={VideoPanel} title="Video Player" />
-			</RoutablePanels>
-		</div>
+		<RoutablePanels {...rest} path={path}>
+			<Route path="home" component={MainPanel} title="Home Page" />
+			<Route path="videoplayer" component={VideoPanel} title="Video Player" />
+		</RoutablePanels>
 	);
 };
 
@@ -30,4 +28,4 @@ const mapStateToProps = ({path}) => {
 	};
 };
 
-export default connect(mapStateToProps)(ThemeDecorator(App));
+export default connect(mapStateToProps, {})(ThemeDecorator(App));

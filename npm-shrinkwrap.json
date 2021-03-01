@@ -16,20 +16,20 @@
 			"version": "git+https://github.com/enactjs/agate.git#5a3e9544846f4a0cab1cecde7962f172ae0ea42c",
 			"from": "git+https://github.com/enactjs/agate.git",
 			"requires": {
-				"@enact/core": "^3.4.11",
-				"@enact/i18n": "^3.4.11",
-				"@enact/spotlight": "^3.4.11",
-				"@enact/ui": "^3.4.11",
+				"@enact/core": "^4.0.0-alpha.1",
+				"@enact/i18n": "^4.0.0-alpha.1",
+				"@enact/spotlight": "^4.0.0-alpha.1",
+				"@enact/ui": "^4.0.0-alpha.1",
 				"classnames": "^2.2.6",
 				"color-convert": "^1.9.3",
 				"deep-freeze": "0.0.1",
 				"eases": "^1.0.8",
-				"ilib": "^14.2.0",
+				"ilib": "^14.4.0",
 				"immer": "^3.2.0",
 				"prop-types": "^15.6.2",
 				"ramda": "^0.25.0",
-				"react": "^16.8.0",
-				"react-dom": "^16.8.0",
+				"react": "^17.0.1",
+				"react-dom": "^17.0.1",
 				"recompose": "^0.30.0",
 				"warning": "^3.0.0"
 			}
@@ -64,6 +64,44 @@
 				}
 			}
 		},
+		"@enact/goldstone": {
+			"version": "file:goldstone",
+			"requires": {
+				"@enact/core": "^3.3.0-alpha.14",
+				"@enact/i18n": "^3.3.0-alpha.14",
+				"@enact/moonstone": "^3.2.6",
+				"@enact/spotlight": "^3.3.0-alpha.14",
+				"@enact/ui": "^3.3.0-alpha.14",
+				"@enact/webos": "^3.3.0-alpha.14",
+				"classnames": "^2.2.5",
+				"ilib": "^14.4.0",
+				"invariant": "^2.2.2",
+				"prop-types": "^15.7.2",
+				"ramda": "^0.24.1",
+				"react": "^16.7.0",
+				"react-dom": "^16.7.0",
+				"recompose": "^0.26.0",
+				"warning": "^3.0.0"
+			},
+			"dependencies": {
+				"ramda": {
+					"version": "0.24.1",
+					"resolved": "https://registry.npmjs.org/ramda/-/ramda-0.24.1.tgz",
+					"integrity": "sha1-w7d1UZfzW43DUCIoJixMkd22uFc="
+				},
+				"recompose": {
+					"version": "0.26.0",
+					"resolved": "https://registry.npmjs.org/recompose/-/recompose-0.26.0.tgz",
+					"integrity": "sha512-KwOu6ztO0mN5vy3+zDcc45lgnaUoaQse/a5yLVqtzTK13czSWnFGmXbQVmnoMgDkI5POd1EwIKSbjU1V7xdZog==",
+					"requires": {
+						"change-emitter": "^0.1.2",
+						"fbjs": "^0.8.1",
+						"hoist-non-react-statics": "^2.3.1",
+						"symbol-observable": "^1.0.4"
+					}
+				}
+			}
+		},
 		"@enact/i18n": {
 			"version": "3.5.0",
 			"resolved": "https://registry.npmjs.org/@enact/i18n/-/i18n-3.5.0.tgz",
@@ -81,6 +119,43 @@
 					"version": "0.24.1",
 					"resolved": "https://registry.npmjs.org/ramda/-/ramda-0.24.1.tgz",
 					"integrity": "sha1-w7d1UZfzW43DUCIoJixMkd22uFc="
+				}
+			}
+		},
+		"@enact/moonstone": {
+			"version": "3.3.1",
+			"resolved": "https://registry.npmjs.org/@enact/moonstone/-/moonstone-3.3.1.tgz",
+			"integrity": "sha512-ccpFJR3pIJLtIPey/QB4OlNvIwHu98mkTTn7KE2VVL30L7mtiHIDbcjIIcVec31Z70VgzeTmyEyVnauuDVfd3g==",
+			"requires": {
+				"@enact/core": "^3.4.9",
+				"@enact/i18n": "^3.4.9",
+				"@enact/spotlight": "^3.4.9",
+				"@enact/ui": "^3.4.9",
+				"classnames": "^2.2.5",
+				"invariant": "^2.2.2",
+				"prop-types": "^15.7.2",
+				"ramda": "^0.24.1",
+				"react": "^16.8.0",
+				"react-dom": "^16.8.0",
+				"recompose": "^0.26.0",
+				"warning": "^3.0.0"
+			},
+			"dependencies": {
+				"ramda": {
+					"version": "0.24.1",
+					"resolved": "https://registry.npmjs.org/ramda/-/ramda-0.24.1.tgz",
+					"integrity": "sha1-w7d1UZfzW43DUCIoJixMkd22uFc="
+				},
+				"recompose": {
+					"version": "0.26.0",
+					"resolved": "https://registry.npmjs.org/recompose/-/recompose-0.26.0.tgz",
+					"integrity": "sha512-KwOu6ztO0mN5vy3+zDcc45lgnaUoaQse/a5yLVqtzTK13czSWnFGmXbQVmnoMgDkI5POd1EwIKSbjU1V7xdZog==",
+					"requires": {
+						"change-emitter": "^0.1.2",
+						"fbjs": "^0.8.1",
+						"hoist-non-react-statics": "^2.3.1",
+						"symbol-observable": "^1.0.4"
+					}
 				}
 			}
 		},
