@@ -2,8 +2,8 @@ import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
-import {TabLayout, Tab} from '@enact/goldstone/TabLayout';
-import {Panel, Header} from '@enact/goldstone/Panels';
+import {TabLayout, Tab} from '../../../goldstone/TabLayout';
+import {Panel, Header} from '../../../goldstone/Panels';
 import VideoList from '../../components/VideoList';
 
 import {changePath} from '../../actions/navigationActions';

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Skinnable from '@enact/goldstone/Skinnable';
-import Icon from '@enact/goldstone/Icon';
+import Skinnable from '../../../../goldstone/Skinnable';
+import Icon from '../../../../goldstone/Icon';
 import iconMap from './FeedbackIcons.js';
 import classNames from 'classnames';
 

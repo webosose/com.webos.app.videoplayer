@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {Panels, Routable, Route} from '@enact/goldstone/Panels';
-import ThemeDecorator from '@enact/goldstone/ThemeDecorator';
+import {Panels, Routable, Route} from '../../goldstone/Panels';
+import ThemeDecorator from '../../goldstone/ThemeDecorator';
 
 import MainPanel from '../views/MainPanel';
 import VideoPanel from '../views/VideoPanel';

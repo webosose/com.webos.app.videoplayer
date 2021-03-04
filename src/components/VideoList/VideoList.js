@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ImageItem from '@enact/goldstone/ImageItem';
-import {VirtualGridList} from '@enact/goldstone/VirtualList';
+import ImageItem from '../../../goldstone/ImageItem';
+import {VirtualGridList} from '../../../goldstone/VirtualList';
 import ri from '@enact/ui/resolution';
-import placeHolderImg from '../../../assets/icons/play.svg';
+import placeHolderImg from '../../../assets/icons/video_invalid.png';
 
 const VideoList = ({videoList, handleNavigate}) => {
     const renderItem = ({index, ...rest}) => {
@@ -21,7 +21,7 @@ const VideoList = ({videoList, handleNavigate}) => {
 				placeholder={placeHolderImg}
 				onClick={() => handleNavigate('/videoplayer', videoList[index], index)}
 			>
-				{videoList[index].itemName}
+				{videoList[index].title}
 			</ImageItem>
 		);
 	};

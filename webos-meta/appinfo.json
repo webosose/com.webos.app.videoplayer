@@ -15,7 +15,16 @@
 	"supportQuickStart": false,
 	"trustLevel": "trusted",
 	"requiredPermissions": [
-		"mediaindexer.operation"
+		"audio.operation",
+		"media.operation",
+		"mediacontroller.operation",
+		"mediaindexer.operation",
+		"mediapipeline.resourcemanagement",
+		"mediapipeline.operation",
+		"session.management",
+		"sleep.management",
+		"physicaldevice.management",
+		"physicaldevice.query"
 	],
 	"accessibility": {
 		"supportsAudioGuidance": true

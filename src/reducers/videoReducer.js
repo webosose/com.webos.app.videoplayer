@@ -13,7 +13,7 @@ const initialState = {
 
 const videoListReducer = (state = initialState, action) => {
 	switch (action.type) {
-		case types.FETCH_VIDEO_LIST: {
+		case types.FETCH_VIDEO_LIST_REQUEST: {
 			return {
 				...state,
 				isVideoListLoading: true,

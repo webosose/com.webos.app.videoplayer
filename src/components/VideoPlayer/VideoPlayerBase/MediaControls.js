@@ -15,10 +15,10 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import $L from '@enact/goldstone/internal/$L';
-import {compareChildren} from '@enact/goldstone/internal/util';
-import ActionGuide from '@enact/goldstone/ActionGuide';
-import Button from '@enact/goldstone/Button';
+import $L from '../../../../goldstone/internal/$L';
+import {compareChildren} from '../../../../goldstone/internal/util';
+import ActionGuide from '../../../../goldstone/ActionGuide';
+import Button from '../../../../goldstone/Button';
 import {countReactChildren} from './util';
 
 import css from './MediaControls.module.less';

@@ -5,8 +5,8 @@ import classNames from 'classnames';
 import ComponentOverride from '@enact/ui/ComponentOverride';
 import EnactPropTypes from '@enact/core/internal/prop-types';
 
-import Image from '@enact/goldstone/Image';
-import Skinnable from '@enact/goldstone/Skinnable';
+import Image from '../../../../goldstone/Image';
+import Skinnable from '../../../../goldstone/Skinnable';
 
 import FeedbackContent from './FeedbackContent';
 import states from './FeedbackIcons.js';
