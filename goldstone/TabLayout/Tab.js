@@ -1,6 +1,5 @@
 import kind from '@enact/core/kind';
 import PropTypes from 'prop-types';
-import React from 'react';
 
 /**
  * An item for the TabLayout.
@@ -41,6 +40,14 @@ const Tab = kind({
 		 * @public
 		 */
 		icon: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+
+		/**
+		 * Called when a tab is clicked.
+		 *
+		 * @type {Function}
+		 * @public
+		*/
+		onTabClick: PropTypes.func,
 
 		/**
 		 * Configuration props for a [Sprite]{@link sandstone/Sprite.Sprite} icon.

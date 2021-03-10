@@ -32,6 +32,158 @@
 				"react-dom": "^17.0.1",
 				"recompose": "^0.30.0",
 				"warning": "^3.0.0"
+			},
+			"dependencies": {
+				"@enact/core": {
+					"version": "4.0.0-alpha.1",
+					"resolved": "https://registry.npmjs.org/@enact/core/-/core-4.0.0-alpha.1.tgz",
+					"integrity": "sha512-afJvFDQ5lfafhg5rN3WV/tXmmoRgCNLKw63VxMNQdY3RveVG0P8ztCymM49HvQ0eUITGvyZ5CtTA57vey5LXcQ==",
+					"requires": {
+						"classnames": "^2.2.5",
+						"invariant": "^2.2.2",
+						"prop-types": "^15.7.2",
+						"ramda": "^0.24.1",
+						"react": "^17.0.1",
+						"react-dom": "^17.0.1",
+						"react-is": "^17.0.1",
+						"recompose": "^0.26.0",
+						"warning": "^4.0.3"
+					},
+					"dependencies": {
+						"ramda": {
+							"version": "0.24.1",
+							"resolved": "https://registry.npmjs.org/ramda/-/ramda-0.24.1.tgz",
+							"integrity": "sha1-w7d1UZfzW43DUCIoJixMkd22uFc="
+						},
+						"recompose": {
+							"version": "0.26.0",
+							"resolved": "https://registry.npmjs.org/recompose/-/recompose-0.26.0.tgz",
+							"integrity": "sha512-KwOu6ztO0mN5vy3+zDcc45lgnaUoaQse/a5yLVqtzTK13czSWnFGmXbQVmnoMgDkI5POd1EwIKSbjU1V7xdZog==",
+							"requires": {
+								"change-emitter": "^0.1.2",
+								"fbjs": "^0.8.1",
+								"hoist-non-react-statics": "^2.3.1",
+								"symbol-observable": "^1.0.4"
+							}
+						},
+						"warning": {
+							"version": "4.0.3",
+							"resolved": "https://registry.npmjs.org/warning/-/warning-4.0.3.tgz",
+							"integrity": "sha512-rpJyN222KWIvHJ/F53XSZv0Zl/accqHR8et1kpaMTD/fLCRxtV8iX8czMzY7sVZupTI3zcUTg8eycS2kNF9l6w==",
+							"requires": {
+								"loose-envify": "^1.0.0"
+							}
+						}
+					}
+				},
+				"@enact/i18n": {
+					"version": "4.0.0-alpha.1",
+					"resolved": "https://registry.npmjs.org/@enact/i18n/-/i18n-4.0.0-alpha.1.tgz",
+					"integrity": "sha512-FWq3e2UNu8A7ooDF8yM5POlEb8TEltqbFzPJ4Zy3Eb1NNaE4FkMayeyovNS8/KVBGH0AutDr0WkHNgjTSavzTg==",
+					"requires": {
+						"@enact/core": "^4.0.0-alpha.1",
+						"prop-types": "^15.7.2",
+						"ramda": "^0.24.1",
+						"react": "^17.0.1",
+						"react-dom": "^17.0.1",
+						"xhr": "^2.4.1"
+					},
+					"dependencies": {
+						"ramda": {
+							"version": "0.24.1",
+							"resolved": "https://registry.npmjs.org/ramda/-/ramda-0.24.1.tgz",
+							"integrity": "sha1-w7d1UZfzW43DUCIoJixMkd22uFc="
+						}
+					}
+				},
+				"@enact/spotlight": {
+					"version": "4.0.0-alpha.1",
+					"resolved": "https://registry.npmjs.org/@enact/spotlight/-/spotlight-4.0.0-alpha.1.tgz",
+					"integrity": "sha512-bQjMrwCBoJtH7DQUT0C3/5U8JBmgkhongo92yIW511ja0jhqq/bwISgdvQzRzbrzFgY82z3lFfapUYNQoCwtLA==",
+					"requires": {
+						"@enact/core": "^4.0.0-alpha.1",
+						"prop-types": "^15.7.2",
+						"ramda": "^0.24.1",
+						"react": "^17.0.1",
+						"react-dom": "^17.0.1",
+						"warning": "^3.0.0"
+					},
+					"dependencies": {
+						"ramda": {
+							"version": "0.24.1",
+							"resolved": "https://registry.npmjs.org/ramda/-/ramda-0.24.1.tgz",
+							"integrity": "sha1-w7d1UZfzW43DUCIoJixMkd22uFc="
+						}
+					}
+				},
+				"@enact/ui": {
+					"version": "4.0.0-alpha.1",
+					"resolved": "https://registry.npmjs.org/@enact/ui/-/ui-4.0.0-alpha.1.tgz",
+					"integrity": "sha512-gMBw91poAJ/aWgfh4LAWW1B3B9FYasXVZnwGCPg1IXNcoThndTH+IjjvpmzEVTXjcY6bECAZhJ800Ywto6RHWg==",
+					"requires": {
+						"@enact/core": "^4.0.0-alpha.1",
+						"classnames": "^2.2.5",
+						"direction": "^1.0.1",
+						"invariant": "^2.2.2",
+						"prop-types": "^15.7.2",
+						"ramda": "^0.24.1",
+						"react": "^17.0.1",
+						"react-dom": "^17.0.1",
+						"recompose": "^0.26.0",
+						"warning": "^3.0.0"
+					},
+					"dependencies": {
+						"ramda": {
+							"version": "0.24.1",
+							"resolved": "https://registry.npmjs.org/ramda/-/ramda-0.24.1.tgz",
+							"integrity": "sha1-w7d1UZfzW43DUCIoJixMkd22uFc="
+						},
+						"recompose": {
+							"version": "0.26.0",
+							"resolved": "https://registry.npmjs.org/recompose/-/recompose-0.26.0.tgz",
+							"integrity": "sha512-KwOu6ztO0mN5vy3+zDcc45lgnaUoaQse/a5yLVqtzTK13czSWnFGmXbQVmnoMgDkI5POd1EwIKSbjU1V7xdZog==",
+							"requires": {
+								"change-emitter": "^0.1.2",
+								"fbjs": "^0.8.1",
+								"hoist-non-react-statics": "^2.3.1",
+								"symbol-observable": "^1.0.4"
+							}
+						}
+					}
+				},
+				"react": {
+					"version": "17.0.1",
+					"resolved": "https://registry.npmjs.org/react/-/react-17.0.1.tgz",
+					"integrity": "sha512-lG9c9UuMHdcAexXtigOZLX8exLWkW0Ku29qPRU8uhF2R9BN96dLCt0psvzPLlHc5OWkgymP3qwTRgbnw5BKx3w==",
+					"requires": {
+						"loose-envify": "^1.1.0",
+						"object-assign": "^4.1.1"
+					}
+				},
+				"react-dom": {
+					"version": "17.0.1",
+					"resolved": "https://registry.npmjs.org/react-dom/-/react-dom-17.0.1.tgz",
+					"integrity": "sha512-6eV150oJZ9U2t9svnsspTMrWNyHc6chX0KzDeAOXftRa8bNeOKTTfCJ7KorIwenkHd2xqVTBTCZd79yk/lx/Ug==",
+					"requires": {
+						"loose-envify": "^1.1.0",
+						"object-assign": "^4.1.1",
+						"scheduler": "^0.20.1"
+					}
+				},
+				"react-is": {
+					"version": "17.0.1",
+					"resolved": "https://registry.npmjs.org/react-is/-/react-is-17.0.1.tgz",
+					"integrity": "sha512-NAnt2iGDXohE5LI7uBnLnqvLQMtzhkiAOLXTmv+qnF9Ky7xAPcX8Up/xWIhxvLVGJvuLiNc4xQLtuqDRzb4fSA=="
+				},
+				"scheduler": {
+					"version": "0.20.1",
+					"resolved": "https://registry.npmjs.org/scheduler/-/scheduler-0.20.1.tgz",
+					"integrity": "sha512-LKTe+2xNJBNxu/QhHvDR14wUXHRQbVY5ZOYpOGWRzhydZUqrLb2JBvLPY7cAqFmqrWuDED0Mjk7013SZiOz6Bw==",
+					"requires": {
+						"loose-envify": "^1.1.0",
+						"object-assign": "^4.1.1"
+					}
+				}
 			}
 		},
 		"@enact/core": {
@@ -64,44 +216,6 @@
 				}
 			}
 		},
-		"@enact/goldstone": {
-			"version": "file:goldstone",
-			"requires": {
-				"@enact/core": "^3.3.0-alpha.14",
-				"@enact/i18n": "^3.3.0-alpha.14",
-				"@enact/moonstone": "^3.2.6",
-				"@enact/spotlight": "^3.3.0-alpha.14",
-				"@enact/ui": "^3.3.0-alpha.14",
-				"@enact/webos": "^3.3.0-alpha.14",
-				"classnames": "^2.2.5",
-				"ilib": "^14.4.0",
-				"invariant": "^2.2.2",
-				"prop-types": "^15.7.2",
-				"ramda": "^0.24.1",
-				"react": "^16.7.0",
-				"react-dom": "^16.7.0",
-				"recompose": "^0.26.0",
-				"warning": "^3.0.0"
-			},
-			"dependencies": {
-				"ramda": {
-					"version": "0.24.1",
-					"resolved": "https://registry.npmjs.org/ramda/-/ramda-0.24.1.tgz",
-					"integrity": "sha1-w7d1UZfzW43DUCIoJixMkd22uFc="
-				},
-				"recompose": {
-					"version": "0.26.0",
-					"resolved": "https://registry.npmjs.org/recompose/-/recompose-0.26.0.tgz",
-					"integrity": "sha512-KwOu6ztO0mN5vy3+zDcc45lgnaUoaQse/a5yLVqtzTK13czSWnFGmXbQVmnoMgDkI5POd1EwIKSbjU1V7xdZog==",
-					"requires": {
-						"change-emitter": "^0.1.2",
-						"fbjs": "^0.8.1",
-						"hoist-non-react-statics": "^2.3.1",
-						"symbol-observable": "^1.0.4"
-					}
-				}
-			}
-		},
 		"@enact/i18n": {
 			"version": "3.5.0",
 			"resolved": "https://registry.npmjs.org/@enact/i18n/-/i18n-3.5.0.tgz",
@@ -119,43 +233,6 @@
 					"version": "0.24.1",
 					"resolved": "https://registry.npmjs.org/ramda/-/ramda-0.24.1.tgz",
 					"integrity": "sha1-w7d1UZfzW43DUCIoJixMkd22uFc="
-				}
-			}
-		},
-		"@enact/moonstone": {
-			"version": "3.3.1",
-			"resolved": "https://registry.npmjs.org/@enact/moonstone/-/moonstone-3.3.1.tgz",
-			"integrity": "sha512-ccpFJR3pIJLtIPey/QB4OlNvIwHu98mkTTn7KE2VVL30L7mtiHIDbcjIIcVec31Z70VgzeTmyEyVnauuDVfd3g==",
-			"requires": {
-				"@enact/core": "^3.4.9",
-				"@enact/i18n": "^3.4.9",
-				"@enact/spotlight": "^3.4.9",
-				"@enact/ui": "^3.4.9",
-				"classnames": "^2.2.5",
-				"invariant": "^2.2.2",
-				"prop-types": "^15.7.2",
-				"ramda": "^0.24.1",
-				"react": "^16.8.0",
-				"react-dom": "^16.8.0",
-				"recompose": "^0.26.0",
-				"warning": "^3.0.0"
-			},
-			"dependencies": {
-				"ramda": {
-					"version": "0.24.1",
-					"resolved": "https://registry.npmjs.org/ramda/-/ramda-0.24.1.tgz",
-					"integrity": "sha1-w7d1UZfzW43DUCIoJixMkd22uFc="
-				},
-				"recompose": {
-					"version": "0.26.0",
-					"resolved": "https://registry.npmjs.org/recompose/-/recompose-0.26.0.tgz",
-					"integrity": "sha512-KwOu6ztO0mN5vy3+zDcc45lgnaUoaQse/a5yLVqtzTK13czSWnFGmXbQVmnoMgDkI5POd1EwIKSbjU1V7xdZog==",
-					"requires": {
-						"change-emitter": "^0.1.2",
-						"fbjs": "^0.8.1",
-						"hoist-non-react-statics": "^2.3.1",
-						"symbol-observable": "^1.0.4"
-					}
 				}
 			}
 		},

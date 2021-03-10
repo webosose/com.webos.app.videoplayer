@@ -7,7 +7,7 @@ import {Cell, Layout} from '@enact/ui/Layout';
 import Toggleable from '@enact/ui/Toggleable';
 import PropTypes from 'prop-types';
 import compose from 'ramda/src/compose';
-import React from 'react';
+import {useMemo} from 'react';
 
 import DebounceDecorator from '../internal/DebounceDecorator';
 import Button from '../DivButton/Button';
@@ -32,6 +32,7 @@ const TabBase = kind({
 		icon: PropTypes.string,
 		index: PropTypes.number,
 		onFocusTab: PropTypes.func,
+		onTabClick: PropTypes.func,
 		orientation: PropTypes.string,
 		selected: PropTypes.bool,
 		size: PropTypes.number,
@@ -49,6 +50,14 @@ const TabBase = kind({
 	},
 
 	handlers: {
+		onClick: handle(
+			forward('onClick'),
+			not(forProp('disabled', true)),
+			adaptEvent(
+				(ev, {index}) => ({selected: index}),
+				forward('onTabClick')
+			)
+		),
 		onFocus: handle(
 			forward('onFocus'),
 			not(forProp('disabled', true)),
@@ -72,6 +81,7 @@ const TabBase = kind({
 	render: ({children, collapsed, css, orientation, size, ...rest}) => {
 		delete rest.index;
 		delete rest.onFocusTab;
+		delete rest.onTabClick;
 		delete rest.stopped;
 		delete rest.sprite;
 
@@ -174,9 +184,9 @@ const TabGroupBase = kind({
 		delete rest.children;
 
 		// eslint-disable-next-line react-hooks/rules-of-hooks
-		const itemProps = React.useMemo(() => ({collapsed, orientation, size: tabSize}), [collapsed, orientation, tabSize]);
+		const itemProps = useMemo(() => ({collapsed, orientation, size: tabSize}), [collapsed, orientation, tabSize]);
 		// eslint-disable-next-line react-hooks/rules-of-hooks
-		const children = React.useMemo(() => tabs.map(tab => {
+		const children = useMemo(() => tabs.map(tab => {
 			if (tab) {
 				// eslint-disable-next-line no-shadow
 				const {icon, title, tabKey, sprite, ...rest} = tab;

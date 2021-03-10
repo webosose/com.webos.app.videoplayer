@@ -26,14 +26,21 @@ const MainPanel = ({devices, handleNavigate, getListDevice, getListVideo, getVid
 	return (
 		<Panel {...rest}>
 			<Header />
-			<TabLayout
-				onSelect={getListVideo}
-			>
+			<TabLayout>
 				{devices.map((device) => {
 					return device.deviceList.length > 0 && device.deviceList.map((deviceList, index) => {
 						return (
-							<Tab className={css.tab} key={deviceList.uri} title={deviceList.name} icon='usb'>
-								<VideoList key={index} videoList={videoList} handleNavigate={handleVideoNavigate}/>
+							<Tab
+								className={css.tab} key={deviceList.uri}
+								icon='usb'
+								onTabClick={() => getListVideo(deviceList.uri)}
+								title={deviceList.name}
+							>
+								<VideoList
+									key={index}
+									videoList={videoList}
+									handleNavigate={handleVideoNavigate}
+								/>
 							</Tab>
 						)
 					})
