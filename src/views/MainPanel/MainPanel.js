@@ -23,9 +23,15 @@ const MainPanel = ({devices, handleNavigate, getListDevice, getListVideo, getVid
 		handleNavigate(url);
 	};
 
+	const handleClose = () => {
+		if(typeof window !== 'undefined') {
+			window.close();
+		}
+	}
+
 	return (
 		<Panel {...rest}>
-			<Header />
+			<Header onClose={handleClose} />
 			<TabLayout>
 				{devices.map((device) => {
 					return device.deviceList.length > 0 && device.deviceList.map((deviceList, index) => {
