@@ -1007,12 +1007,6 @@ function VideoPlayerBase (
 		rewind();
 	};
 
-	// const handleRewind = handle(
-	// 	// forwardRewind,
-	// 	shouldShowMiniFeedback,
-	// 	() => rewind(),
-	// );
-
 	/**
 	 * Sets the playback rate type (from the keys of [playbackRateHash]{@link goldstone/VideoPlayer.VideoPlayer#playbackRateHash}).
 	 *
