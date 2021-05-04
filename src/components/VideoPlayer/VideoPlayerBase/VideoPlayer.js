@@ -976,7 +976,7 @@ function VideoPlayerBase (
 			case 'pause':
 				// If it's possible to slowRewind, do it, otherwise just leave it as normal rewind : QEVENTSEVT-17386
 				if (rateForSlowRewind && rateForSlowRewind.length >= 0) {
-					command = 'slowRewind';
+					command = 'rewind';
 				}
 				selectPlaybackRates(command);
 				if (state.paused && state.duration > state.currentTime) {
@@ -1006,6 +1006,12 @@ function VideoPlayerBase (
 	const handleRewind = () => {
 		rewind();
 	};
+
+	// const handleRewind = handle(
+	// 	// forwardRewind,
+	// 	shouldShowMiniFeedback,
+	// 	() => rewind(),
+	// );
 
 	/**
 	 * Sets the playback rate type (from the keys of [playbackRateHash]{@link goldstone/VideoPlayer.VideoPlayer#playbackRateHash}).
@@ -1123,7 +1129,7 @@ function VideoPlayerBase (
 			if (!isNaN(seconds)) {
 				sliderTooltipTimeJob.throttle(seconds);
 				const knobTime = secondsToTime(seconds, getDurFmt(locale), {includeHour: true});
-
+				
 				forward('onScrub', {...ev, seconds}, arguments[0]);
 
 				announce(`${$L('jump to')} ${knobTime}`);
@@ -1386,15 +1392,15 @@ function VideoPlayerBase (
 									<MediaSlider
 										backgroundProgress={state.proportionLoaded}
 										disabled={disabled || state.sourceUnavailable}
-										forcePressed={state.slider5WayPressed}
+										// forcePressed={state.slider5WayPressed}
 										onBlur={handleSliderBlur}
 										onChange={onSliderChange}
 										onFocus={handleSliderFocus}
 										onKeyDown={handleSliderKeyDown}
 										onKnobMove={handleKnobMove}
-										onSpotlightUp={handleSpotlightUpFromSlider}
+										// onSpotlightUp={handleSpotlightUpFromSlider}
 										selection={proportionSelection}
-										spotlightDisabled={spotlightDisabled || !state.mediaControlsVisible}
+										spotlightDisabled={true}
 										value={state.proportionPlayed}
 										visible={state.mediaSliderVisible}
 									>
