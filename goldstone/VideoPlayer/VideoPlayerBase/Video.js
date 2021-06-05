@@ -162,7 +162,7 @@ const VideoBase = class extends React.Component {
 
 	clearMedia ({setMedia} = this.props) {
 		if (setMedia) {
-			setMedia(null);
+			setMedia.call(this.props, null)
 		}
 	}
 
