@@ -1,4 +1,3 @@
-'use strict';
 import {IconButton} from '../IconButton';
 import React from 'react';
 import {mount} from 'enzyme';

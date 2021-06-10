@@ -1,4 +1,3 @@
-'use strict';
 import {Button} from '../BaseButton';
 import React from 'react';
 import {shallow} from 'enzyme';

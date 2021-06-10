@@ -57,7 +57,6 @@ const Image = ({alt, children, className, onLoad, onError, placeholder, sizing, 
 			role="img"
 			draggable="false"
 			className={imageContainer}
-			aria-label={['aria-label'] || alt}
 			style={{...style, backgroundImage:backgroundImage}}
 		>
 			{children}

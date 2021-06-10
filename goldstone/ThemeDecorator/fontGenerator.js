@@ -28,7 +28,7 @@ const fontName = 'Sandstone';
 // 			'U+FB50-FDFF'
 // 	}
 // };
-const fonts = {
+let fonts = {
 	'ja': {
 		regular: 'LG Smart UI JP'
 	},
@@ -41,7 +41,7 @@ const fonts = {
 };
 
 // Duplications and alternate locale names
-fonts['en-JP'] = fonts['ja'];
+fonts['en-JP'] = fonts.ja
 
 addLocalizedFont(fontName, fonts);
 

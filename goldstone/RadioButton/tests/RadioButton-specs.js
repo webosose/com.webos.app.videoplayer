@@ -1,4 +1,3 @@
-'use strict';
 import {RadioButtonBase} from '../RadioButton';
 import React from 'react';
 import {mount} from 'enzyme';
