@@ -1,5 +1,6 @@
+/* eslint-disable react/jsx-no-bind */
 import Group from '@enact/ui/Group';
-import React, {useCallback} from 'react';
+import {Fragment, useCallback} from 'react';
 import PropTypes from 'prop-types';
 import Icon from '../../Icon';
 import RadioButton from '../../RadioButton';
@@ -39,7 +40,7 @@ const Menu = ({handleNavigate, handleSelect, heading, list, position, radioIndex
 				{
 					type === 'subMenu' &&
 					Object.keys(list).map( (item, index) => (
-						<React.Fragment key={`${index}-${item}`}>
+						<Fragment key={`${index}-${item}`}>
 							{
 								list[item].type === 'subMenu' &&
 								<li key={`${index}-${item}`} onClick={() => handleNavigate(item)}>
@@ -59,7 +60,7 @@ const Menu = ({handleNavigate, handleSelect, heading, list, position, radioIndex
 									}
 								</li>
 							}
-						</React.Fragment>
+						</Fragment>
 					))
 				}
 				{

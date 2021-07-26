@@ -1,8 +1,9 @@
-import React, {useEffect} from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {Panels, Routable, Route} from '../../goldstone/Panels';
-import ThemeDecorator from '../../goldstone/ThemeDecorator';
+import {Panels, Routable, Route} from '@enact/sandstone/Panels';
+import ThemeDecorator from '@enact/sandstone/ThemeDecorator';
 
 import MainPanel from '../views/MainPanel';
 import VideoPanel from '../views/VideoPanel';
@@ -16,11 +17,9 @@ const App = ({handleNavigate, getVideoMetaData, path, ...rest}) => {
 
 	const onLaunch = () => {
 		const launchParams = JSON.parse(window.PalmSystem.launchParams);
-		console.log(launchParams);
-		if(launchParams && launchParams.videoList && launchParams.videoList.count > 0) {
+		if (launchParams && launchParams.videoList && launchParams.videoList.count > 0) {
 			getVideoMetaData(launchParams.videoList.results[0].uri, 0);
 			handleNavigate('/videoplayer');
-			console.log("launch working");
 		}
 	};
 
@@ -43,7 +42,10 @@ const App = ({handleNavigate, getVideoMetaData, path, ...rest}) => {
 };
 
 App.propTypes = {
+	getVideoMetaData: PropTypes.func,
+	handleNavigate: PropTypes.func,
 	path: PropTypes.string
+
 };
 
 const mapStateToProps = ({path}) => {
@@ -59,7 +61,7 @@ const mapDispatchToState = dispatch => {
 			uri: uri,
 			videoIndex: index
 		}))
-	}
-}
+	};
+};
 
 export default connect(mapStateToProps, mapDispatchToState)(ThemeDecorator(App));

@@ -1,9 +1,10 @@
-import React, {useEffect} from 'react';
+/* eslint-disable react/jsx-no-bind */
+import {useEffect} from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
-import {TabLayout, Tab} from '../../../goldstone/TabLayout';
-import {Panel, Header} from '../../../goldstone/Panels';
+import {TabLayout, Tab} from '@enact/sandstone/TabLayout';
+import {Panel, Header} from '@enact/sandstone/Panels';
 import VideoList from '../../components/VideoList';
 
 import {changePath} from '../../actions/navigationActions';
@@ -16,7 +17,7 @@ const MainPanel = ({devices, handleNavigate, getListDevice, getListVideo, getVid
 
 	useEffect(() => {
 		getListDevice();
-	}, []);
+	}, [getListDevice]);
 
 	const handleVideoNavigate = (url, videoMetaData, index) => {
 		getVideoMetaData(videoMetaData.uri, index);
@@ -24,10 +25,10 @@ const MainPanel = ({devices, handleNavigate, getListDevice, getListVideo, getVid
 	};
 
 	const handleClose = () => {
-		if(typeof window !== 'undefined') {
+		if (typeof window !== 'undefined') {
 			window.close();
 		}
-	}
+	};
 
 	return (
 		<Panel {...rest}>
@@ -38,7 +39,7 @@ const MainPanel = ({devices, handleNavigate, getListDevice, getListVideo, getVid
 						return (
 							<Tab
 								className={css.tab} key={deviceList.uri}
-								icon='usb'
+								icon="usb"
 								onTabClick={() => getListVideo(deviceList.uri)}
 								title={deviceList.name}
 							>
@@ -48,8 +49,8 @@ const MainPanel = ({devices, handleNavigate, getListDevice, getListVideo, getVid
 									handleNavigate={handleVideoNavigate}
 								/>
 							</Tab>
-						)
-					})
+						);
+					});
 				})}
 			</TabLayout>
 		</Panel>
@@ -58,6 +59,7 @@ const MainPanel = ({devices, handleNavigate, getListDevice, getListVideo, getVid
 
 MainPanel.propTypes = {
 	deviceList: PropTypes.array,
+	devices: PropTypes.array,
 	getListDevice: PropTypes.func,
 	getListVideo: PropTypes.func,
 	getVideoMetaData: PropTypes.func,

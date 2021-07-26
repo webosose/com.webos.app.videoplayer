@@ -12,7 +12,7 @@ import {on, off} from '@enact/core/dispatcher';
 import {forward} from '@enact/core/handle';
 import EnactPropTypes from '@enact/core/internal/prop-types';
 import PropTypes from 'prop-types';
-import React from 'react';
+import * as React from 'react';
 
 /**
  * Generates a key representing the source node or nodes provided

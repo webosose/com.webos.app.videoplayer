@@ -4,7 +4,7 @@ import {Media, getKeyFromSource} from '@enact/ui/Media';
 import EnactPropTypes from '@enact/core/internal/prop-types';
 import Slottable from '@enact/ui/Slottable';
 import compose from 'ramda/src/compose';
-import React from 'react';
+import {isValidElement, Component, Fragment} from 'react';
 import PropTypes from 'prop-types';
 import css from './VideoPlayer.module.less';
 
@@ -17,7 +17,7 @@ import css from './VideoPlayer.module.less';
  * @ui
  * @private
  */
-const VideoBase = class extends React.Component {
+const VideoBase = class extends Component {
 	static displayName = 'Video';
 
 	static propTypes = /** @lends sandstone/VideoPlayer.Video.prototype */ {
@@ -209,7 +209,7 @@ const VideoBase = class extends React.Component {
 		}
 
 		return (
-			<React.Fragment>
+			<Fragment>
 				{sourceKey ? (
 					<Media
 						{...rest}
@@ -219,7 +219,7 @@ const VideoBase = class extends React.Component {
 						mediaComponent={mediaComponent}
 						preload="none"
 						ref={this.setVideoRef}
-						source={React.isValidElement(source) ? source : (
+						source={isValidElement(source) ? source : (
 							<source src={source} />
 						)}
 					/>
@@ -234,12 +234,12 @@ const VideoBase = class extends React.Component {
 						onLoadStart={this.handlePreloadLoadStart}
 						preload="none"
 						ref={this.setPreloadRef}
-						source={React.isValidElement(preloadSource) ? preloadSource : (
+						source={isValidElement(preloadSource) ? preloadSource : (
 							<source src={preloadSource} />
 						)}
 					/>
 				) : null}
-			</React.Fragment>
+			</Fragment>
 		);
 	}
 };

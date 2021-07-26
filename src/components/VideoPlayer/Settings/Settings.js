@@ -1,4 +1,4 @@
-import React, {useReducer, useCallback} from 'react';
+import {useReducer, useCallback} from 'react';
 import settingsReducer from '../Reducers/settingsReducer';
 import Menu from '../Menu';
 

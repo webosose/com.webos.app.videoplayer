@@ -1,4 +1,4 @@
-import React from 'react';
+/* eslint-disable react/jsx-no-bind */
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {changePath} from '../../actions/navigationActions';
@@ -8,8 +8,8 @@ import VideoPlayer from '../../components/VideoPlayer';
 const VideoPanel = ({videoMetaData, videoList, videoIndex, handleBack, getVideoMetaData}) => {
 
 	const handleNextVideo = () => {
-		if(videoList && videoList.length > 0) {
-			if(videoIndex === videoList.length - 1) {
+		if (videoList && videoList.length > 0) {
+			if (videoIndex === videoList.length - 1) {
 				getVideoMetaData(videoList[0].uri, 0);
 			} else {
 				getVideoMetaData(videoList[videoIndex + 1].uri, videoIndex + 1);
@@ -18,8 +18,8 @@ const VideoPanel = ({videoMetaData, videoList, videoIndex, handleBack, getVideoM
 	};
 
 	const handlePreviousVideo = () => {
-		if(videoList && videoList.length > 0) {
-			if(videoIndex === 0) {
+		if (videoList && videoList.length > 0) {
+			if (videoIndex === 0) {
 				getVideoMetaData(videoList[videoList.length - 1].uri, videoList.length - 1);
 			} else {
 				getVideoMetaData(videoList[videoIndex - 1].uri, videoIndex - 1);

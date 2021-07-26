@@ -1,12 +1,12 @@
-import React from 'react';
+/* eslint-disable react/jsx-no-bind */
 import PropTypes from 'prop-types';
-import ImageItem from '../../../goldstone/ImageItem';
-import {VirtualGridList} from '../../../goldstone/VirtualList';
+import ImageItem from '@enact/sandstone/ImageItem';
+import {VirtualGridList} from '@enact/sandstone/VirtualList';
 import ri from '@enact/ui/resolution';
 import placeHolderImg from '../../../assets/icons/video_invalid.png';
 
 const VideoList = ({videoList, handleNavigate}) => {
-    const renderItem = ({index, ...rest}) => {
+	const renderItem = ({index, ...rest}) => {
 		let thumbPath = videoList[index].thumbnail;
 		let encodedPath = encodeURIComponent(thumbPath);
 
@@ -25,12 +25,15 @@ const VideoList = ({videoList, handleNavigate}) => {
 			</ImageItem>
 		);
 	};
+	renderItem.propTypes = {
+		index: PropTypes.number
+	};
 	videoList = videoList || [];
-    return (
+	return (
 		videoList.length === 0 ?
 			<h3>No Photo, Video or folders exist in storage device</h3 > :
 			<VirtualGridList
-				direction='vertical'
+				direction="vertical"
 				dataSize={videoList.length}
 				itemRenderer={renderItem}
 				itemSize={{
@@ -39,7 +42,7 @@ const VideoList = ({videoList, handleNavigate}) => {
 				}}
 			/>
 	);
-}
+};
 
 VideoList.propTypes = {
 	handleNavigate: PropTypes.func.isRequired,

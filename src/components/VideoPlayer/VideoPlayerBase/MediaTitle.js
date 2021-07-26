@@ -1,5 +1,5 @@
 import ForwardRef from '@enact/ui/ForwardRef';
-import React, {memo} from 'react';
+import {memo} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Marquee from '../../../../goldstone/Marquee';

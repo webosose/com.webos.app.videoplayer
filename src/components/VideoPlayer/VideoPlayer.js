@@ -5,132 +5,51 @@
  * @exports VideoPlayer
  */
 import PropTypes from 'prop-types';
-import React, {useReducer, useCallback, useEffect} from 'react';
-import VideoPlayerBase from './VideoPlayerBase/VideoPlayer';
-import videoPlayerReducer from './Reducers/videoPlayerReducer';
-import settingsReducer from './Reducers/settingsReducer';
-import subtitleInitialState from './SubTitle/subtitleData';
-
-import css from './VideoPlayer.module.less';
-
-const initialState = {
-	current: 0,
-	repeat: {
-		type: 0,
-		loop: false
-	},
-	settings: {
-		isOpen: false,
-		position: 0
-	},
-	subTitle: {
-		isOpen: false,
-		position: 0
-	}
-};
+import VideoPlayerBase, {Video} from '@enact/sandstone/VideoPlayer';
+import Button from '@enact/sandstone/Button';
 
 const VideoPlayer = (
 		{
-			// actionGuideLabel,
 			handleBack,
 			handleNext,
 			handlePrevious,
-			playlist,
-			...rest
+			playlist
 		}
 ) => {
 
-	// Video Player component state.
-	const [state] = useReducer(videoPlayerReducer, initialState);
-	const [subtitleState] = useReducer(settingsReducer, subtitleInitialState);
-	// const subtitleRef = React.createRef();
-	const handleSubtitleSettings = useCallback(value => {
-		const videoPlayerTag = document.getElementsByTagName('video')[0];
-		videoPlayerTag.className = `${videoPlayerTag.className.split(' ')[0]} ${css[value.color.value]} ${css[value.size.value]}`;
-	}, []);
-
-	// const handleSubtitleNavigate = useCallback((value) => {
-	// 	dispatchSubtitle({type: 'navigate', payload: value});
-	// }, []);
-
-	// const handleSubtitleSelect = useCallback((item) => {
-	// 	dispatchSubtitle({type: 'selected', payload: item.selected});
-	// }, []);
-
-	// const handleSubtitleRepeat = useCallback(() => {
-	// 	dispatch({ type: 'repeat' })
-	// }, []);
-
-	// const handleSubtitleMenu = useCallback((event) => {
-	// 	dispatch({type: 'toggle', payload: 'subTitle', position: event.pageX})
-	// }, []);
-
-	// const handleSettingsMenu = useCallback((event) => {
-	// 	dispatch({type: 'toggle', payload: 'settings', position: event.pageX})
-	// }, []);
-
-	// handle subtitle color
-	useEffect(() => {
-		handleSubtitleSettings({
-			position: {
-				value: subtitleState.items.position.children.items[subtitleState.items.position.children.index].value
-			},
-			size: {
-				value: subtitleState.items.size.children.items[subtitleState.items.size.children.index].value
-			},
-			color: {
-				value: subtitleState.items.color.children.items[subtitleState.items.color.children.index].value
-			}
-		});
-	}, [subtitleState.items.size.children.index, subtitleState.items.position.children.index, subtitleState.items.color.children.index, handleSubtitleSettings, subtitleState.items.position.children.items, subtitleState.items.size.children.items, subtitleState.items.color.children.items]);
-
-
 	return (
-		<VideoPlayerBase
-			{...rest}
-			onJumpForward={handleNext}
-			onJumpBackward={handlePrevious}
-			// onEnded={handleNext}
-			onBack={handleBack}
-			loop={state.repeat.loop}
-			poster={playlist.thumbnail}
-			thumbnailSrc={playlist.thumbnail}
-			title={playlist.title}
-			infoComponents={playlist.title}
-		>
-			<source src={playlist.file_path} type="video/mp4" />
-			{/* <source src='file:///tmp/usb/sda/sda1/small.mp4' type="video/mp4" /> */}
-			{/* <track ref={subtitleRef} id="subtitle-english" kind="subtitles" srcLang="en" src={playlist.track} label="English" default /> */}
-
-			{/* <MediaControls
-				// // actionGuideLabel={actionGuideLabel}
-			>
-				{
-					state.settings.isOpen && <Settings position={state.settings.position} />
-				}
-				{
-					state.subTitle.isOpen &&
-					<SubTitle
-						data={subtitleState}
-						handleNavigate={handleSubtitleNavigate}
-						handleSelect={handleSubtitleSelect}
-						position={state.subTitle.position}
-					/>
-				}
+		<>
+			<div style={{position: 'absolute', top: '0', right: '0', zIndex: '9999'}}>
 				<Button
-					onClick={handleSubtitleRepeat}
-					icon={iconsTypes.repeat[state.repeat.type]}
-					iconOnly
-					size="small"
-					backgroundOpacity="transparent"
+					icon="arrowlargeleft"
+					onClick={handlePrevious}
 				/>
-				<Button onClick={handleSubtitleMenu} size="small" icon="subtitle" iconOnly backgroundOpacity="transparent" />
-				<Button size="small" icon="demooptions" iconOnly backgroundOpacity="transparent" />
-				<Button size="small" icon="pausejumpforward" iconOnly backgroundOpacity="transparent" />
-				<Button size="small" icon="cc" iconOnly backgroundOpacity="transparent" />
-				<Button onClick={handleSettingsMenu} size="small" icon="gear" iconOnly backgroundOpacity="transparent" />
-			</MediaControls> */}
-		</VideoPlayerBase>
+				<Button
+					icon="arrowlargeright"
+					onClick={handleNext}
+				/>
+				<Button
+					icon="arrowhookleft"
+					onClick={handleBack}
+				/>
+			</div>
+			<VideoPlayerBase
+				feedbackHideDelay={0}
+				muted
+				onBack={handleBack}
+				title={playlist.title}
+				playbackRateHash={{
+					fastForward: [1.25, '3/2', '2', '2.5', '4', '8'],
+					rewind: ['-2', '-4', '-8', '-16'],
+					slowForward: ['1/4', '1/2'],
+					slowRewind: ['-1/2', '-1']
+				}}
+			>
+				<Video>
+					<source src={playlist.file_path} />
+				</Video>
+			</VideoPlayerBase>
+		</>
 	);
 };
 

@@ -1,4 +1,3 @@
-import React from 'react';
 import Menu from '../Menu';
 
 const SubTitle = ({data, handleNavigate, handleSelect, position}) => {
