@@ -35,7 +35,6 @@ const VideoPlayer = (
 			</div>
 			<VideoPlayerBase
 				feedbackHideDelay={0}
-				muted
 				onBack={handleBack}
 				title={playlist.title}
 				playbackRateHash={{
