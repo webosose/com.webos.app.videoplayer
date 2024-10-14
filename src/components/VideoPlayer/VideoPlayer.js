@@ -18,7 +18,7 @@ const VideoPlayer = (
 ) => {
 
 	return (
-		<>
+		<div>
 			<div style={{position: 'absolute', top: '0', right: '0', zIndex: '9999'}}>
 				<Button
 					icon="arrowlargeleft"
@@ -48,7 +48,7 @@ const VideoPlayer = (
 					<source src={playlist.file_path} />
 				</Video>
 			</VideoPlayerBase>
-		</>
+		</div>
 	);
 };
 
